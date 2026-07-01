@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------- */
+/* Base — neutral, theme-agnostic. Each concept scopes its own palette    */
+/* below and sets --focus-ring so :focus-visible stays on-brand per theme. */
+/* ---------------------------------------------------------------------- */
+:root {
+  --focus-ring: #141210;
+}
+
+@theme inline {
+  --font-bricolage: var(--font-bricolage);
+  --font-plex-mono: var(--font-plex-mono);
+  --font-newsreader: var(--font-newsreader);
+  --font-saira-condensed: var(--font-saira-condensed);
+  --font-hanken: var(--font-hanken);
+  --font-big-shoulders: var(--font-big-shoulders);
+  --font-archivo: var(--font-archivo);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.concept-scroll {
+  scrollbar-width: thin;
+}
+
+/* ---------------------------------------------------------------------- */
+/* A — Swiss Datasheet: warm paper, ink, one restrained DIN-orange mark   */
+/* ---------------------------------------------------------------------- */
+.c-datasheet {
+  --paper: #f4f1ea;
+  --paper-raised: #eae5d8;
+  --ink: #141210;
+  --ink-soft: #4a453d;
+  --ink-faint: #857e70;
+  --rule: #cfc7b3;
+  --mark: #e8531b;
+  --mark-ink: #fdf6ef;
+  --focus-ring: var(--mark);
+
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-hanken), sans-serif; /* fallback; overridden by concept body class */
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(20, 18, 16, 0.045) 1px,
+      transparent 0
+    );
+  background-size: 3px 3px;
+}
+
+.c-datasheet .font-display {
+  font-family: var(--font-bricolage), sans-serif;
+}
+.c-datasheet .font-data {
+  font-family: var(--font-plex-mono), monospace;
+}
+.c-datasheet .font-quote {
+  font-family: var(--font-newsreader), serif;
+}
+.c-datasheet .font-body {
+  font-family: var(--font-plex-mono), monospace;
+}
+
+/* ---------------------------------------------------------------------- */
+/* B — Industrial Noir: graphite/steel, no glow, hazard-yellow hairline   */
+/* ---------------------------------------------------------------------- */
+.c-noir {
+  --graphite: #16171a;
+  --graphite-raised: #1f2024;
+  --graphite-line: #2b2d31;
+  --steel: #9a9ea5;
+  --steel-dim: #6b6f75;
+  --warmwhite: #ece9e2;
+  --hazard: #f2c200;
+  --focus-ring: var(--hazard);
+
+  background-color: var(--graphite);
+  color: var(--warmwhite);
+  cursor: crosshair;
+}
+
+.c-noir .font-display {
+  font-family: var(--font-saira-condensed), sans-serif;
+}
+.c-noir .font-body {
+  font-family: var(--font-hanken), sans-serif;
+}
+
+/* ---------------------------------------------------------------------- */
+/* C — Constructivist: off-white + ink + one ultramarine block           */
+/* ---------------------------------------------------------------------- */
+.c-constructivist {
+  --paper2: #ede9e3;
+  --ink2: #15130f;
+  --ultramarine: #1d3fbf;
+  --ultramarine-ink: #eef1fb;
+  --focus-ring: var(--ultramarine);
+
+  background-color: var(--paper2);
+  color: var(--ink2);
+}
+
+.c-constructivist .font-display {
+  font-family: var(--font-big-shoulders), sans-serif;
+}
+.c-constructivist .font-body {
+  font-family: var(--font-archivo), sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, currentColor 25%, transparent);
+}
+
+@keyframes blueprint-draw {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes block-explode {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(var(--ex, 12px), var(--ey, -8px)) rotate(var(--er, 2deg));
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
