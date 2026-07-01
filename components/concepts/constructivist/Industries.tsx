@@ -1,9 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { images, industries } from "@/lib/content";
-import { Reveal, RevealGroup, RevealItem } from "@/components/shared/Reveal";
+import { RevealGroup, RevealItem } from "@/components/shared/Reveal";
+import { ClipReveal } from "@/components/shared/motion";
 import { clipUp } from "@/lib/motion";
+import { SectionHeading } from "./SectionHeading";
 
 export function Industries() {
   return (
@@ -12,16 +13,7 @@ export function Industries() {
       className="relative overflow-x-hidden px-4 pt-24 sm:px-6 lg:px-10 lg:pt-32"
     >
       <div className="mx-auto max-w-[1440px]">
-        <Reveal>
-          <div className="flex items-baseline justify-between gap-6 border-b border-[var(--ink2)] pb-4">
-            <h2 className="font-display text-[clamp(2rem,6vw,4rem)] font-black uppercase leading-none tracking-tight text-[var(--ink2)]">
-              Branchen
-            </h2>
-            <span className="font-display hidden text-[clamp(2rem,6vw,4rem)] font-black leading-none text-[var(--ink2)]/15 sm:block">
-              03
-            </span>
-          </div>
-        </Reveal>
+        <SectionHeading index="03" title="Branchen" />
 
         <RevealGroup className="mt-2 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
           {industries.map((industry, i) => (
@@ -33,16 +25,19 @@ export function Industries() {
               } ${i >= 2 ? "sm:border-t" : ""} ${i % 2 === 1 ? "lg:mt-8" : ""}`}
             >
               <div className="relative mb-6 aspect-[16/9] overflow-hidden border border-[var(--ink2)]">
-                <Image
+                <ClipReveal
                   src={images[industry.image]}
                   alt={industry.imageAlt}
-                  fill
                   sizes="(min-width: 640px) 50vw, 100vw"
-                  className="object-cover grayscale contrast-125"
+                  imgClassName="grayscale contrast-125"
+                  direction={i % 2 === 0 ? "right" : "left"}
+                  duration={1.1}
+                  parallax
+                  fill
                 />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-[var(--ultramarine)] mix-blend-multiply opacity-40"
+                  className="pointer-events-none absolute inset-0 bg-[var(--ultramarine)] mix-blend-multiply opacity-40"
                 />
               </div>
               <span

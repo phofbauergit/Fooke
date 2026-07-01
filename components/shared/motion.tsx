@@ -102,18 +102,28 @@ export function MaskLines({
   lines,
   className = "",
   lineClassName = "",
+  /**
+   * When true, reveal on scroll-into-view (whileInView) instead of on mount.
+   * Use for below-the-fold headings so the line-mask wipe actually plays when
+   * the reader reaches it, rather than firing (and finishing) during the
+   * initial mount far above the viewport.
+   */
+  inView = false,
 }: {
   lines: string[];
   className?: string;
   lineClassName?: string;
+  inView?: boolean;
 }) {
   const reduced = useReducedMotion();
   return (
-    <motion.div
-      className={className}
+    <motion.span
+      className={`block ${className}`}
       variants={lineContainer}
       initial={reduced ? undefined : "hidden"}
-      animate={reduced ? undefined : "visible"}
+      animate={reduced ? undefined : inView ? undefined : "visible"}
+      whileInView={reduced || !inView ? undefined : "visible"}
+      viewport={inView ? { once: true, amount: 0.4 } : undefined}
     >
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden">
@@ -122,7 +132,7 @@ export function MaskLines({
           </motion.span>
         </span>
       ))}
-    </motion.div>
+    </motion.span>
   );
 }
 
@@ -134,10 +144,20 @@ export function Magnetic({
   children,
   className = "",
   strength = 0.35,
+  href,
+  ariaLabel,
 }: {
   children: ReactNode;
   className?: string;
   strength?: number;
+  /**
+   * Optional href — when provided, the wrapper becomes a real link (e.g. a
+   * tel: anchor) so the magnetic effect can drive the interactive element
+   * directly, avoiding nested-anchor markup. Omit for the wrapper-as-hover
+   * pattern used elsewhere.
+   */
+  href?: string;
+  ariaLabel?: string;
 }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLAnchorElement>(null);
@@ -157,6 +177,8 @@ export function Magnetic({
   return (
     <a
       ref={ref}
+      href={href}
+      aria-label={ariaLabel}
       className={`inline-block transition-transform duration-300 ease-out ${className}`}
       onMouseMove={onMove}
       onMouseLeave={onLeave}

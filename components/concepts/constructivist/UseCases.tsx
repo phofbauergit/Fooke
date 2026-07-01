@@ -1,9 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { images, useCases } from "@/lib/content";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/Reveal";
+import { ClipReveal } from "@/components/shared/motion";
 import { fadeUp } from "@/lib/motion";
+import { SectionHeading } from "./SectionHeading";
 
 export function UseCases() {
   const [lead, ...rest] = useCases;
@@ -14,31 +15,25 @@ export function UseCases() {
       className="relative overflow-x-hidden px-4 pt-24 sm:px-6 lg:px-10 lg:pt-32"
     >
       <div className="mx-auto max-w-[1440px]">
-        <Reveal>
-          <div className="flex items-baseline justify-between gap-6 border-b border-[var(--ink2)] pb-4">
-            <h2 className="font-display text-[clamp(2rem,6vw,4rem)] font-black uppercase leading-none tracking-tight text-[var(--ink2)]">
-              Anwendungsfälle
-            </h2>
-            <span className="font-display hidden text-[clamp(2rem,6vw,4rem)] font-black leading-none text-[var(--ink2)]/15 sm:block">
-              04
-            </span>
-          </div>
-        </Reveal>
+        <SectionHeading index="04" title="Anwendungsfälle" />
 
         <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-7" variant={fadeUp}>
             <article className="relative overflow-hidden border border-[var(--ink2)] bg-[var(--ultramarine)]">
               <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-[var(--ink2)]">
-                <Image
+                <ClipReveal
                   src={images[lead.image]}
                   alt={lead.imageAlt}
-                  fill
                   sizes="(min-width: 1024px) 60vw, 100vw"
-                  className="object-cover opacity-90"
+                  imgClassName="opacity-90"
+                  direction="right"
+                  duration={1.2}
+                  parallax
+                  fill
                 />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-[var(--ultramarine)] mix-blend-multiply opacity-50"
+                  className="pointer-events-none absolute inset-0 bg-[var(--ultramarine)] mix-blend-multiply opacity-50"
                 />
               </div>
               <div className="relative flex flex-col justify-between gap-6 p-6 sm:p-10 lg:min-h-[320px] lg:flex-row">
@@ -86,12 +81,14 @@ export function UseCases() {
                 className="relative overflow-hidden border border-[var(--ink2)] lg:col-span-4"
               >
                 <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--ink2)]">
-                  <Image
+                  <ClipReveal
                     src={images[useCase.image]}
                     alt={useCase.imageAlt}
-                    fill
                     sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover grayscale"
+                    imgClassName="grayscale"
+                    direction="up"
+                    duration={1.1}
+                    fill
                   />
                 </div>
                 <div className="p-6 sm:p-7">

@@ -15,7 +15,7 @@ import { Contact } from "./Contact";
  */
 export function ConstructivistConcept() {
   return (
-    <div className="c-constructivist concept-scroll min-h-screen overflow-x-hidden">
+    <div className="c-constructivist concept-scroll min-h-screen overflow-x-clip">
       <ScrollProgress color="var(--ultramarine)" />
       <Header />
       <main>

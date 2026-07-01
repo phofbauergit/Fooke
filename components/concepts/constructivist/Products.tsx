@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import { images, products } from "@/lib/content";
-import { Reveal, RevealGroup, RevealItem } from "@/components/shared/Reveal";
+import { RevealGroup, RevealItem } from "@/components/shared/Reveal";
+import { HoverScale } from "@/components/shared/motion";
+import { SectionHeading } from "./SectionHeading";
 
 function toId(href: string): string {
   return href.replace(/^#/, "");
@@ -17,16 +19,7 @@ export function Products() {
       className="relative overflow-x-hidden px-4 pt-24 sm:px-6 lg:px-10 lg:pt-32"
     >
       <div className="mx-auto max-w-[1440px]">
-        <Reveal>
-          <div className="flex items-baseline justify-between gap-6 border-b border-[var(--ink2)] pb-4">
-            <h2 className="font-display text-[clamp(2rem,6vw,4rem)] font-black uppercase leading-none tracking-tight text-[var(--ink2)]">
-              Produktprogramm
-            </h2>
-            <span className="font-display hidden text-[clamp(2rem,6vw,4rem)] font-black leading-none text-[var(--ink2)]/15 sm:block">
-              02
-            </span>
-          </div>
-        </Reveal>
+        <SectionHeading index="02" title="Produktprogramm" />
 
         <RevealGroup>
           <ul>
@@ -51,15 +44,20 @@ export function Products() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
 
-                      <div className="relative hidden aspect-[4/3] w-28 shrink-0 overflow-hidden border border-[var(--ink2)] sm:block">
-                        <Image
-                          src={images[product.image]}
-                          alt={product.imageAlt}
-                          fill
-                          sizes="112px"
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
+                      <HoverScale
+                        className="hidden aspect-[4/3] w-28 shrink-0 overflow-hidden border border-[var(--ink2)] sm:block"
+                        scale={1.08}
+                      >
+                        <span className="relative block h-full w-full">
+                          <Image
+                            src={images[product.image]}
+                            alt={product.imageAlt}
+                            fill
+                            sizes="112px"
+                            className="object-cover"
+                          />
+                        </span>
+                      </HoverScale>
 
                       <span className="flex flex-col sm:w-44 sm:shrink-0">
                         <span className="font-body text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--ultramarine)]">
