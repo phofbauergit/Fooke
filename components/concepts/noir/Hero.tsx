@@ -119,6 +119,7 @@ export function Hero() {
               delay={0.35}
               priority
               parallax
+              aboveFold
             />
             <div
               aria-hidden

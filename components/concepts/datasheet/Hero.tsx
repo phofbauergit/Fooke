@@ -92,6 +92,7 @@ export function Hero() {
               delay={0.4}
               priority
               parallax
+              aboveFold
             />
             <figcaption className="mt-2 px-1 pb-1 font-data text-[11px] leading-snug text-[var(--ink-soft)]">
               FIG. 00 — 5-Achs Portalfräsmaschine, Studioaufnahme.

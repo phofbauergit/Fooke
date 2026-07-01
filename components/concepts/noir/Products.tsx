@@ -61,12 +61,12 @@ export function Products() {
                 <HazardTag>{product.category}</HazardTag>
               </div>
               <h3
-                className="font-display font-bold uppercase leading-[1.02] text-[var(--warmwhite)] md:col-span-3"
+                className="font-display font-bold uppercase leading-[1.05] text-[var(--warmwhite)] md:col-span-4"
                 style={{ fontSize: "clamp(1.5rem, 2.6vw, 2.25rem)" }}
               >
-                {product.name}
+                <span className="break-words hyphens-auto">{product.name}</span>
               </h3>
-              <p className="font-body text-sm leading-relaxed text-[var(--steel)] md:col-span-4 md:text-base">
+              <p className="font-body text-sm leading-relaxed text-[var(--steel)] md:col-span-3 md:max-w-[26ch] md:text-base">
                 {product.description}
               </p>
               <span

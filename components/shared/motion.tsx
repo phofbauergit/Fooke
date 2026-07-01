@@ -28,6 +28,7 @@ export function ClipReveal({
   priority = false,
   parallax = false,
   fill = false,
+  aboveFold = false,
 }: {
   src: string;
   alt: string;
@@ -40,6 +41,14 @@ export function ClipReveal({
   priority?: boolean;
   parallax?: boolean;
   fill?: boolean;
+  /**
+   * For above-the-fold heroes: drive the wipe with `animate` (fires on
+   * mount) instead of `whileInView`. `whileInView` with `amount: 0.2`
+   * never triggers for tall hero images that are taller than the viewport
+   * on load, leaving the image fully clipped (blank). `animate` is
+   * viewport-independent so the reveal reliably plays on load.
+   */
+  aboveFold?: boolean;
 }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -49,13 +58,16 @@ export function ClipReveal({
   });
   const y = useTransform(scrollYProgress, [0, 1], parallax && !reduced ? ["-8%", "8%"] : ["0%", "0%"]);
 
+  const revealTarget = { clipPath: "inset(0% 0% 0% 0%)" };
+
   return (
     <div ref={ref} className={`${fill ? "absolute inset-0" : "relative"} overflow-hidden ${className}`}>
       <motion.div
         className="absolute inset-0"
         initial={reduced ? undefined : { clipPath: CLIPS[direction] }}
-        whileInView={reduced ? undefined : { clipPath: "inset(0% 0% 0% 0%)" }}
-        viewport={{ once: true, amount: 0.2 }}
+        animate={reduced ? undefined : aboveFold ? revealTarget : undefined}
+        whileInView={reduced ? undefined : aboveFold ? undefined : revealTarget}
+        viewport={aboveFold ? undefined : { once: true, amount: 0.2 }}
         transition={{ duration: reduced ? 0 : duration, ease: [0.77, 0, 0.175, 1], delay: reduced ? 0 : delay }}
       >
         <motion.div className="absolute inset-0" style={{ y }}>
