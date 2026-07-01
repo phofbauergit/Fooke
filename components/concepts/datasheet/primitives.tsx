@@ -104,14 +104,27 @@ export function Figure({
   sizes?: string;
   preload?: boolean;
 }) {
+  const reduced = useReducedMotion();
   return (
-    <figure className="border border-[var(--rule)] bg-[var(--paper-raised)] p-2">
+    <motion.figure
+      className="border border-[var(--rule)] bg-[var(--paper-raised)] p-2"
+      initial={reduced ? undefined : { opacity: 0, y: 20 }}
+      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: reduced ? 0 : 0.55, ease: EASE }}
+    >
       <div className={`relative overflow-hidden border border-[var(--rule)] ${aspect}`}>
-        <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" preload={preload} />
+        <motion.div
+          className="relative h-full w-full"
+          whileHover={reduced ? undefined : { scale: 1.03 }}
+          transition={{ duration: 0.4, ease: EASE }}
+        >
+          <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" preload={preload} />
+        </motion.div>
       </div>
       <figcaption className="mt-2 px-1 pb-1 font-data text-[11px] leading-snug text-[var(--ink-soft)]">
         {caption}
       </figcaption>
-    </figure>
+    </motion.figure>
   );
 }

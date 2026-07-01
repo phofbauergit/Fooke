@@ -1,10 +1,12 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { ScrollProgress } from "@/components/shared/motion";
 import { useKonamiCode } from "@/lib/hooks/useKonamiCode";
 import { Contact } from "./Contact";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
+import { ImageStrip } from "./ImageStrip";
 import { Industries } from "./Industries";
 import { Products } from "./Products";
 import { SecretExhibit } from "./SecretExhibit";
@@ -18,10 +20,12 @@ export function NoirConcept() {
 
   return (
     <div className="c-noir concept-scroll min-h-screen">
+      <ScrollProgress color="var(--hazard)" />
       <div className="font-body">
         <Header />
         <main>
           <Hero />
+          <ImageStrip />
           <Products />
           <Industries />
           <UseCases />

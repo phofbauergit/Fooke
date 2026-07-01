@@ -163,3 +163,22 @@ body {
     transform: translate(0, 0) rotate(0deg);
   }
 }
+
+@keyframes noir-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-noir-marquee {
+  animation: noir-marquee 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-noir-marquee {
+    animation: none;
+  }
+}

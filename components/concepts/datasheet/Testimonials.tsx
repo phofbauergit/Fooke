@@ -1,7 +1,7 @@
 "use client";
 
-import { testimonials } from "@/lib/content";
-import { Reveal, RevealGroup, RevealItem, SectionKicker } from "./primitives";
+import { images, testimonials } from "@/lib/content";
+import { Figure, Reveal, RevealGroup, RevealItem, SectionKicker } from "./primitives";
 
 export function Testimonials() {
   return (
@@ -14,12 +14,22 @@ export function Testimonials() {
           </h2>
         </Reveal>
 
+        <Reveal className="mt-10">
+          <Figure
+            src={images.fswStudio}
+            alt="Rührreibschweißanlage — Referenzprojekt mit TU Darmstadt und AIRBUS"
+            caption="FIG. 03 — FSW-Referenz, Aerospace-Partnerschaft."
+            aspect="aspect-[21/8]"
+            sizes="(min-width: 1024px) 1152px, 90vw"
+          />
+        </Reveal>
+
         <RevealGroup className="mt-10 grid gap-10 border-t border-[var(--ink)] pt-10 sm:grid-cols-2 sm:gap-12">
           {testimonials.map((t) => (
             <RevealItem key={t.id} className="border-t border-[var(--rule)] pt-6">
               <figure>
                 <blockquote className="font-quote text-xl italic leading-snug text-[var(--ink)] sm:text-2xl">
-                  „{t.quote}“
+                  „{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-4 font-data text-xs uppercase tracking-[0.1em] text-[var(--ink-soft)]">
                   {t.author} — {t.company}

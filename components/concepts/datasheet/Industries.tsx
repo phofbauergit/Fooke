@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { images, industries, productFinderCategories } from "@/lib/content";
 import { Figure, Reveal, RevealGroup, RevealItem, SectionKicker, Tag } from "./primitives";
 
@@ -18,11 +19,20 @@ export function Industries() {
           {industries.map((industry, i) => (
             <RevealItem
               key={industry.id}
-              className="grid gap-3 border-b border-[var(--rule)] py-6 sm:grid-cols-[140px_1fr] sm:gap-8"
+              className="grid gap-4 border-b border-[var(--rule)] py-6 sm:grid-cols-[140px_100px_1fr] sm:items-start sm:gap-6"
             >
               <span className="font-data text-xs uppercase tracking-[0.12em] text-[var(--ink-faint)]">
                 IND.{String(i + 1).padStart(2, "0")}
               </span>
+              <div className="relative hidden aspect-square overflow-hidden border border-[var(--rule)] sm:block">
+                <Image
+                  src={images[industry.image]}
+                  alt={industry.imageAlt}
+                  fill
+                  sizes="100px"
+                  className="object-cover"
+                />
+              </div>
               <span>
                 <span className="font-display text-xl font-medium text-[var(--ink)]">
                   {industry.name}

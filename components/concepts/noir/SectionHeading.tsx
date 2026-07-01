@@ -1,19 +1,26 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp, useReducedMotion } from "@/lib/motion";
+
 interface SectionHeadingProps {
   eyebrow: string;
   title: string;
   index?: string;
 }
 
-/**
- * Shared section header: small uppercase eyebrow + oversized condensed
- * title, hairline rule beneath. The oversized index numeral is decorative
- * (aria-hidden) and large enough to satisfy WCAG's 3:1 large-text
- * allowance for --steel-dim; every other text use in this concept sticks
- * to --steel or --warmwhite for guaranteed 4.5:1 contrast.
- */
 export function SectionHeading({ eyebrow, title, index }: SectionHeadingProps) {
+  const reduced = useReducedMotion();
+
   return (
-    <div className="mb-10 flex items-end justify-between gap-6 border-b border-[var(--graphite-line)] pb-6 md:mb-16 md:pb-8">
+    <motion.div
+      initial={reduced ? undefined : "hidden"}
+      whileInView={reduced ? undefined : "visible"}
+      viewport={{ once: true, amount: 0.5 }}
+      variants={fadeUp}
+      transition={{ duration: reduced ? 0 : 0.55, ease: [0.16, 1, 0.3, 1] }}
+      className="mb-10 flex items-end justify-between gap-6 border-b border-[var(--graphite-line)] pb-6 md:mb-16 md:pb-8"
+    >
       <div>
         <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.2em] text-[var(--steel)]">
           {eyebrow}
@@ -28,6 +35,14 @@ export function SectionHeading({ eyebrow, title, index }: SectionHeadingProps) {
         >
           {title}
         </h2>
+        <motion.span
+          aria-hidden
+          className="mt-4 block h-px w-16 origin-left bg-[var(--hazard)]"
+          initial={reduced ? undefined : { scaleX: 0 }}
+          whileInView={reduced ? undefined : { scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: reduced ? 0 : 0.6, delay: reduced ? 0 : 0.2, ease: [0.16, 1, 0.3, 1] }}
+        />
       </div>
       {index && (
         <span
@@ -38,6 +53,6 @@ export function SectionHeading({ eyebrow, title, index }: SectionHeadingProps) {
           {index}
         </span>
       )}
-    </div>
+    </motion.div>
   );
 }

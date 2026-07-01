@@ -1,7 +1,14 @@
-import { industries, productFinderCategories } from "@/lib/content";
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { images, industries, productFinderCategories } from "@/lib/content";
+import { fadeUp, staggerContainer, useReducedMotion } from "@/lib/motion";
 import { SectionHeading } from "./SectionHeading";
 
 export function Industries() {
+  const reduced = useReducedMotion();
+
   return (
     <section
       id="industries"
@@ -32,32 +39,54 @@ export function Industries() {
           })}
         </nav>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden border border-[var(--graphite-line)] bg-[var(--graphite-line)] sm:grid-cols-2">
+        <motion.div
+          initial={reduced ? undefined : "hidden"}
+          whileInView={reduced ? undefined : "visible"}
+          viewport={{ once: true, margin: "-5% 0px" }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 gap-px overflow-hidden border border-[var(--graphite-line)] bg-[var(--graphite-line)] sm:grid-cols-2"
+        >
           {industries.map((industry, i) => (
-            <div
+            <motion.div
               key={industry.id}
               id={`industry-${industry.id}`}
-              className="bg-[var(--graphite-raised)] p-8 md:p-10"
+              variants={fadeUp}
+              transition={{ duration: reduced ? 0 : 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative overflow-hidden bg-[var(--graphite-raised)]"
             >
-              <span
-                aria-hidden
-                className="font-display font-bold text-[var(--steel-dim)]"
-                style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1 }}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3
-                className="mt-2 font-display font-bold uppercase leading-[0.98] text-[var(--warmwhite)]"
-                style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}
-              >
-                {industry.name}
-              </h3>
-              <p className="mt-4 max-w-[42ch] font-body text-sm leading-relaxed text-[var(--steel)] md:text-base">
-                {industry.description}
-              </p>
-            </div>
+              <div className="relative aspect-[16/9] w-full overflow-hidden sm:aspect-[16/10]">
+                <Image
+                  src={images[industry.image]}
+                  alt={industry.imageAlt}
+                  fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--graphite-raised)] via-[var(--graphite-raised)]/40 to-transparent"
+                />
+                <span
+                  aria-hidden
+                  className="absolute right-4 top-4 font-display text-5xl font-bold text-[var(--warmwhite)]/20"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="p-8 md:p-10">
+                <h3
+                  className="font-display font-bold uppercase leading-[0.98] text-[var(--warmwhite)]"
+                  style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}
+                >
+                  {industry.name}
+                </h3>
+                <p className="mt-4 max-w-[42ch] font-body text-sm leading-relaxed text-[var(--steel)] md:text-base">
+                  {industry.description}
+                </p>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

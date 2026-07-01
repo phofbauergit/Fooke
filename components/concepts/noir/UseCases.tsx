@@ -1,16 +1,52 @@
-import { useCases } from "@/lib/content";
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { images, useCases } from "@/lib/content";
+import { clipUp, fadeUp, staggerContainer, useReducedMotion } from "@/lib/motion";
 import { SectionHeading } from "./SectionHeading";
 
 export function UseCases() {
+  const reduced = useReducedMotion();
+
   return (
     <section id="usecases" className="border-b border-[var(--graphite-line)] px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1400px]">
         <SectionHeading eyebrow="Ergebnisse aus der Praxis" title="Anwendungen" index="03" />
 
-        <div className="divide-y divide-[var(--graphite-line)] border-y border-[var(--graphite-line)]">
-          {useCases.map((useCase) => (
-            <div key={useCase.id} className="grid grid-cols-1 gap-8 py-10 md:grid-cols-12 md:gap-10 md:py-14">
-              <div className="md:col-span-4">
+        <motion.div
+          initial={reduced ? undefined : "hidden"}
+          whileInView={reduced ? undefined : "visible"}
+          viewport={{ once: true, margin: "-5% 0px" }}
+          variants={staggerContainer}
+          className="divide-y divide-[var(--graphite-line)] border-y border-[var(--graphite-line)]"
+        >
+          {useCases.map((useCase, i) => (
+            <motion.div
+              key={useCase.id}
+              variants={i % 2 === 0 ? fadeUp : clipUp}
+              transition={{ duration: reduced ? 0 : 0.55, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 gap-8 py-10 md:grid-cols-12 md:gap-10 md:py-14"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden md:col-span-4 md:aspect-auto md:min-h-[280px]">
+                <Image
+                  src={images[useCase.image]}
+                  alt={useCase.imageAlt}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent to-[var(--graphite)]/20 md:bg-gradient-to-t md:from-[var(--graphite)]/60 md:to-transparent"
+                />
+                <span
+                  aria-hidden
+                  className="absolute left-3 top-3 h-5 w-5 border-l-2 border-t-2 border-[var(--hazard)]"
+                />
+              </div>
+
+              <div className="md:col-span-3">
                 <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-[var(--steel)]">
                   {useCase.industry}
                 </p>
@@ -26,7 +62,7 @@ export function UseCases() {
                 </p>
               </div>
 
-              <div className="md:col-span-8">
+              <div className="md:col-span-5">
                 <h3
                   className="font-display font-bold uppercase leading-[1.02] text-[var(--warmwhite)]"
                   style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
@@ -52,9 +88,9 @@ export function UseCases() {
                   </ul>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 
-import { useCases } from "@/lib/content";
+import Image from "next/image";
+import { images, useCases } from "@/lib/content";
 import { Reveal, RevealGroup, RevealItem, SectionKicker } from "./primitives";
 
 export function UseCases() {
@@ -18,7 +19,7 @@ export function UseCases() {
           {useCases.map((uc, i) => (
             <RevealItem
               key={uc.id}
-              className="grid gap-6 border-b border-[var(--rule)] py-8 sm:grid-cols-[200px_1fr]"
+              className="grid gap-6 border-b border-[var(--rule)] py-8 sm:grid-cols-[200px_1fr_220px] sm:items-start"
             >
               <div>
                 <p className="font-data text-[11px] uppercase tracking-[0.12em] text-[var(--ink-faint)]">
@@ -48,6 +49,15 @@ export function UseCases() {
                     ))}
                   </ul>
                 )}
+              </div>
+              <div className="relative aspect-[4/3] overflow-hidden border border-[var(--rule)]">
+                <Image
+                  src={images[uc.image]}
+                  alt={uc.imageAlt}
+                  fill
+                  sizes="220px"
+                  className="object-cover"
+                />
               </div>
             </RevealItem>
           ))}

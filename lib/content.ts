@@ -46,6 +46,8 @@ export const products: Product[] = [
     description:
       "Hochdynamische Portalfräsmaschinen für komplexe Geometrien in Aerospace, Defense und Automotive.",
     href: "#portal",
+    image: "millDark",
+    imageAlt: "5-Achs Portalfräsmaschine im Technologiezentrum, Fräskopf im Fokus",
   },
   {
     id: "portal-longbed",
@@ -54,6 +56,8 @@ export const products: Product[] = [
     description:
       "Stabile Langbett-Architektur für große Bauteile — Schienenfahrzeug-Bodenbaugruppen, Seitenwände und Dächer.",
     href: "#portal",
+    image: "railAssembly",
+    imageAlt: "Langbettfräsmaschine bei der Bearbeitung einer Schienenfahrzeug-Bodenbaugruppe",
   },
   {
     id: "portal-plate",
@@ -62,6 +66,8 @@ export const products: Product[] = [
     description:
       "Präzise Plattenbearbeitung für Werkzeugbau, Prototypen und Formenbau.",
     href: "#portal",
+    image: "blueprintMill",
+    imageAlt: "Plattenfräsmaschine in der Fertigungshalle, Portalansicht",
   },
   {
     id: "fsw",
@@ -70,6 +76,8 @@ export const products: Product[] = [
     description:
       "5-Achs-FSW-Anlagen für sphärisch gekrümmte Flugzeugrümpfe — entwickelt mit TU Darmstadt und AIRBUS Aerostructures.",
     href: "#fsw",
+    image: "fswStudio",
+    imageAlt: "Rührreibschweißanlage in der Entwicklung, Aerospace-Anwendung",
   },
   {
     id: "additive",
@@ -78,6 +86,8 @@ export const products: Product[] = [
     description:
       "Flexible, präzise und materialsparende 3D-Druckanlagen für branchenübergreifenden Einsatz.",
     href: "#additive",
+    image: "millingCloseup",
+    imageAlt: "Hochpräzise Fräsbearbeitung — Nahaufnahme des Werkzeugs im Einsatz",
   },
   {
     id: "stock",
@@ -86,6 +96,8 @@ export const products: Product[] = [
     description:
       "Regelmäßig gefertigte Portalfräsmaschinen ohne konkreten Auftrag — attraktive Lieferzeiten.",
     href: "#stock",
+    image: "hallEnvironment",
+    imageAlt: "Portalfräsmaschine in der Fertigungshalle, bereit zur Auslieferung",
   },
 ];
 
@@ -95,24 +107,32 @@ export const industries: Industry[] = [
     name: "Aerospace",
     description:
       "High-Tech-Lösungen für komplexe Aerospace-Bauteile. Wir entwickeln und unterstützen die Technologien der Luftfahrt von morgen.",
+    image: "cfrpCloseup",
+    imageAlt: "CFK-Außenhaut nach Präzisionsfräsbearbeitung, Aerospace-Anwendung",
   },
   {
     id: "defense",
     name: "Defense",
     description:
       "Maßgeschneiderte 5-Achs-Fräslösungen für komplexe militärische Bauteile und mission-critical Anwendungen.",
+    image: "millDark",
+    imageAlt: "5-Achs-Bearbeitung eines Defense-Bauteils im Technologiezentrum",
   },
   {
     id: "rail",
     name: "Rail",
     description:
       "Die Bearbeitung großer Bodenbaugruppen, Seitenwände und Dächer erfordert höchste Stabilität und Maßhaltigkeit.",
+    image: "railAssembly",
+    imageAlt: "Aluminium-Bodenbaugruppe für Schienenfahrzeuge in Bearbeitung",
   },
   {
     id: "automotive",
     name: "Automotive",
     description:
       "Prototypenbau, Modellbau & Formenbau, Werkzeugbau, Vorrichtungs- & Lehrenbau, Cubing & Fahrzeugdesign.",
+    image: "machineStudio",
+    imageAlt: "Portalfräsmaschine bei der Bearbeitung eines Automotive-Werkzeugs",
   },
 ];
 
@@ -130,6 +150,8 @@ export const useCases: UseCase[] = [
       "Präzise Materialreduktion",
       "CFRP, GFRP, Aluminium, Titan",
     ],
+    image: "millingCloseup",
+    imageAlt: "CFK-Flugzeugaußenhaut unter Fräsbearbeitung auf FOOKE-Portalfräsmaschine",
   },
   {
     id: "automotive-tooling",
@@ -144,6 +166,8 @@ export const useCases: UseCase[] = [
       "Deutlich reduzierte Nacharbeit",
       "Maximale Ausschöpfung des Maschinenpotenzials",
     ],
+    image: "titaniumDetail",
+    imageAlt: "Präzisionsgefrästes Titan-Bauteil im Automotive-Werkzeugbau",
   },
   {
     id: "rail-floor",
@@ -158,6 +182,8 @@ export const useCases: UseCase[] = [
       "Aluminiumprofile in Großserie",
       "Prozess von Maschine bis Schneide optimiert",
     ],
+    image: "railAssembly",
+    imageAlt: "Langbettfräsmaschine bei der Bearbeitung einer Schienenfahrzeug-Bodenbaugruppe",
   },
   {
     id: "fsw-fuselage",
@@ -172,6 +198,8 @@ export const useCases: UseCase[] = [
       "TU Darmstadt + AIRBUS Partnerschaft",
       "Effizienteres, umweltfreundlicheres Fügen",
     ],
+    image: "fswSeamMacro",
+    imageAlt: "Rührreibschweißnaht — sphärisch gekrümmte Flugzeugrümpfe",
   },
 ];
 
@@ -283,4 +311,20 @@ export const images = {
   machineStudio: "/images/editorial-machine.png",
   blueprintMill: "/images/industrial-hero.png",
   railAssembly: "/images/industrial-rail.png",
+  millingCloseup: "/images/milling-closeup.png",
+  fswSeamMacro: "/images/fsw-seam-macro.png",
+  titaniumDetail: "/images/titanium-detail.png",
+  hallEnvironment: "/images/hall-environment.png",
 };
+
+/** Full-bleed gallery for strips, marquees, and cross-section photo bands. */
+export const gallery = [
+  { image: "millingCloseup" as const, alt: "5-Achs Fräskopf bei der CFK-Bearbeitung", label: "Fräsbearbeitung" },
+  { image: "millDark" as const, alt: "Portalfräsmaschine im Technologiezentrum Borken", label: "Portalfräsmaschine" },
+  { image: "fswSeamMacro" as const, alt: "Rührreibschweißnaht, Aerospace", label: "FSW-Naht" },
+  { image: "titaniumDetail" as const, alt: "Präzisionsgefrästes Titan-Bauteil", label: "Präzision" },
+  { image: "hallEnvironment" as const, alt: "Fertigungshalle mit Portalfräsmaschine", label: "Fertigung" },
+  { image: "cfrpCloseup" as const, alt: "CFK-Bearbeitung Aerospace-Niveau", label: "CFK Aerospace" },
+  { image: "blueprintMill" as const, alt: "Portalfräsmaschine Fertigungshalle", label: "Maschinenbau" },
+  { image: "railAssembly" as const, alt: "Schienenfahrzeug-Bodenbaugruppe", label: "Rail" },
+];

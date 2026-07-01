@@ -1,8 +1,15 @@
-import { productFinderCategories, products } from "@/lib/content";
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { images, productFinderCategories, products } from "@/lib/content";
+import { fadeUp, staggerFast, useReducedMotion } from "@/lib/motion";
 import { HazardTag } from "./HazardTag";
 import { SectionHeading } from "./SectionHeading";
 
 export function Products() {
+  const reduced = useReducedMotion();
+
   return (
     <section id="products" className="border-b border-[var(--graphite-line)] px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1400px]">
@@ -17,22 +24,44 @@ export function Products() {
           ))}
         </div>
 
-        <div className="divide-y divide-[var(--graphite-line)] border-y border-[var(--graphite-line)]">
+        <motion.div
+          initial={reduced ? undefined : "hidden"}
+          whileInView={reduced ? undefined : "visible"}
+          viewport={{ once: true, margin: "-5% 0px" }}
+          variants={staggerFast}
+          className="divide-y divide-[var(--graphite-line)] border-y border-[var(--graphite-line)]"
+        >
           {products.map((product) => (
-            <a
+            <motion.a
               key={product.id}
               href={product.href}
+              variants={fadeUp}
+              transition={{ duration: reduced ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="group relative grid grid-cols-1 gap-4 py-8 pl-5 transition-colors duration-200 hover:bg-[var(--graphite-raised)] md:grid-cols-12 md:items-center md:gap-6 md:py-9"
             >
               <span
                 aria-hidden
-                className="absolute left-0 top-0 h-full w-[3px] bg-transparent transition-colors duration-200 group-hover:bg-[var(--hazard)]"
+                className="absolute left-0 top-0 h-full w-[3px] scale-y-0 bg-[var(--hazard)] transition-transform duration-300 group-hover:scale-y-100"
+                style={{ transformOrigin: "top" }}
               />
-              <div className="md:col-span-3">
+              <div className="relative hidden aspect-[4/3] overflow-hidden md:col-span-2 md:block">
+                <Image
+                  src={images[product.image]}
+                  alt={product.imageAlt}
+                  fill
+                  sizes="160px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-[var(--graphite)]/30 transition-opacity duration-300 group-hover:opacity-0"
+                />
+              </div>
+              <div className="md:col-span-2">
                 <HazardTag>{product.category}</HazardTag>
               </div>
               <h3
-                className="font-display font-bold uppercase leading-[1.02] text-[var(--warmwhite)] md:col-span-4"
+                className="font-display font-bold uppercase leading-[1.02] text-[var(--warmwhite)] md:col-span-3"
                 style={{ fontSize: "clamp(1.5rem, 2.6vw, 2.25rem)" }}
               >
                 {product.name}
@@ -46,9 +75,9 @@ export function Products() {
               >
                 →
               </span>
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

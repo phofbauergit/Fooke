@@ -1,17 +1,33 @@
 export type ConceptId = "datasheet" | "noir" | "constructivist";
 
+export type ImageKey =
+  | "millDark"
+  | "cfrpCloseup"
+  | "fswStudio"
+  | "machineStudio"
+  | "blueprintMill"
+  | "railAssembly"
+  | "millingCloseup"
+  | "fswSeamMacro"
+  | "titaniumDetail"
+  | "hallEnvironment";
+
 export interface Product {
   id: string;
   name: string;
   category: string;
   description: string;
   href: string;
+  image: ImageKey;
+  imageAlt: string;
 }
 
 export interface Industry {
   id: string;
   name: string;
   description: string;
+  image: ImageKey;
+  imageAlt: string;
 }
 
 export interface UseCase {
@@ -22,6 +38,14 @@ export interface UseCase {
   metricLabel: string;
   description: string;
   bullets?: string[];
+  image: ImageKey;
+  imageAlt: string;
+}
+
+export interface GallerySlide {
+  image: ImageKey;
+  alt: string;
+  label: string;
 }
 
 export interface Testimonial {

@@ -1,3 +1,4 @@
+import { ScrollProgress } from "@/components/shared/motion";
 import { Contact } from "./Contact";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
@@ -11,6 +12,7 @@ import { UseCases } from "./UseCases";
 export function DatasheetConcept() {
   return (
     <div className="c-datasheet concept-scroll min-h-screen font-data">
+      <ScrollProgress color="var(--mark)" />
       <Header />
       <main>
         <Hero />

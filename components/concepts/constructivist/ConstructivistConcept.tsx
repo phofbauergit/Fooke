@@ -1,3 +1,4 @@
+import { ScrollProgress } from "@/components/shared/motion";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { Products } from "./Products";
@@ -15,6 +16,7 @@ import { Contact } from "./Contact";
 export function ConstructivistConcept() {
   return (
     <div className="c-constructivist concept-scroll min-h-screen overflow-x-hidden">
+      <ScrollProgress color="var(--ultramarine)" />
       <Header />
       <main>
         <Hero />
