@@ -112,13 +112,13 @@ export function Hero() {
                 src={images.blueprintMill}
                 alt="Portalfräsmaschine im Werk: Blaupausenhafte Ansicht der Fräsanlage mit sichtbarer Portalkonstruktion"
                 sizes="(min-width: 1024px) 40vw, 90vw"
-                className="absolute inset-0"
                 imgClassName="grayscale contrast-125"
                 direction="up"
                 duration={1.2}
                 delay={0.5}
                 priority
                 parallax
+                fill
               />
               <div
                 aria-hidden

@@ -27,6 +27,7 @@ export function ClipReveal({
   duration = 1,
   priority = false,
   parallax = false,
+  fill = false,
 }: {
   src: string;
   alt: string;
@@ -38,6 +39,7 @@ export function ClipReveal({
   duration?: number;
   priority?: boolean;
   parallax?: boolean;
+  fill?: boolean;
 }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -48,7 +50,7 @@ export function ClipReveal({
   const y = useTransform(scrollYProgress, [0, 1], parallax && !reduced ? ["-8%", "8%"] : ["0%", "0%"]);
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className}`}>
+    <div ref={ref} className={`${fill ? "absolute inset-0" : "relative"} overflow-hidden ${className}`}>
       <motion.div
         className="absolute inset-0"
         initial={reduced ? undefined : { clipPath: CLIPS[direction] }}
