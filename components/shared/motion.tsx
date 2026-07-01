@@ -67,7 +67,7 @@ export function ClipReveal({
         initial={reduced ? undefined : { clipPath: CLIPS[direction] }}
         animate={reduced ? undefined : aboveFold ? revealTarget : undefined}
         whileInView={reduced ? undefined : aboveFold ? undefined : revealTarget}
-        viewport={aboveFold ? undefined : { once: true, amount: 0.2 }}
+        viewport={aboveFold ? undefined : { once: true, amount: 0.05 }}
         transition={{ duration: reduced ? 0 : duration, ease: [0.77, 0, 0.175, 1], delay: reduced ? 0 : delay }}
       >
         <motion.div className="absolute inset-0" style={{ y }}>

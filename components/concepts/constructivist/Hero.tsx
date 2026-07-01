@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { company, images } from "@/lib/content";
 import { Reveal } from "@/components/shared/Reveal";
 import { ClipReveal } from "@/components/shared/motion";
@@ -28,19 +27,9 @@ function MaskLine({ children, delay = 0 }: { children: React.ReactNode; delay?: 
 
 export function Hero() {
   const { runId, flash, trigger, reducedMotion } = useBlockExplode();
-  const heroRef = useRef<HTMLElement>(null);
-  // Subtle scroll-driven drift on the ultramarine intro block — it recedes
-  // slightly as the reader scrolls past the hero. Vertical-only, so the
-  // section's overflow-x guard still holds.
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const introY = useTransform(scrollYProgress, [0, 1], reducedMotion ? ["0%", "0%"] : ["0%", "-10%"]);
 
   return (
     <section
-      ref={heroRef}
       id="hero"
       className="relative overflow-x-hidden px-4 pt-14 sm:px-6 lg:px-10 lg:pt-20"
     >
@@ -63,22 +52,20 @@ export function Hero() {
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
           <Reveal className="relative z-10 lg:col-span-7 lg:rotate-[-1deg]" delay={0.1}>
-            <motion.div style={{ y: introY }}>
-              <ExplodingBlock
-                runId={runId}
-                ex="-18px"
-                ey="10px"
-                er="-2.5deg"
-                className="border border-[var(--ink2)] bg-[var(--ultramarine)] p-6 sm:p-8"
-              >
-                <p className="font-body text-lg leading-relaxed text-[var(--ultramarine-ink)] sm:text-xl">
-                  {company.intro}
-                </p>
-                <p className="mt-6 border-t border-[var(--ultramarine-ink)]/25 pt-4 font-body text-xs font-bold uppercase tracking-[0.2em] text-[var(--ultramarine-ink)]/80">
-                  {company.tagline} · {company.location}
-                </p>
-              </ExplodingBlock>
-            </motion.div>
+            <ExplodingBlock
+              runId={runId}
+              ex="-18px"
+              ey="10px"
+              er="-2.5deg"
+              className="border border-[var(--ink2)] bg-[var(--ultramarine)] p-6 sm:p-8"
+            >
+              <p className="font-body text-lg leading-relaxed text-[var(--ultramarine-ink)] sm:text-xl">
+                {company.intro}
+              </p>
+              <p className="mt-6 border-t border-[var(--ultramarine-ink)]/25 pt-4 font-body text-xs font-bold uppercase tracking-[0.2em] text-[var(--ultramarine-ink)]/80">
+                {company.tagline} · {company.location}
+              </p>
+            </ExplodingBlock>
           </Reveal>
 
           <Reveal className="relative z-20 lg:col-span-5 lg:-mt-6 lg:rotate-[1.5deg]" delay={0.2}>
@@ -93,9 +80,6 @@ export function Hero() {
                 type="button"
                 onClick={trigger}
                 aria-label={`Gründungsjahr ${company.since} — Klicken für eine kurze Explosionsanimation der Bausteine`}
-                /* Local --focus-ring override: focus/hover fill this button
-                   ink2, where the default ultramarine ring would read too
-                   dark — swap to paper2 so the ring stays visible. */
                 style={{ ["--focus-ring" as string]: "var(--paper2)" }}
                 className="group block w-full cursor-pointer px-5 py-4 text-left transition-colors duration-200 hover:bg-[var(--ink2)] focus-visible:bg-[var(--ink2)] sm:px-7 sm:py-5"
               >

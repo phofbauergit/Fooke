@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { images, products } from "@/lib/content";
 import { RevealGroup, RevealItem } from "@/components/shared/Reveal";
-import { HoverScale } from "@/components/shared/motion";
 import { SectionHeading } from "./SectionHeading";
 
 function toId(href: string): string {
@@ -44,20 +43,15 @@ export function Products() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
 
-                      <HoverScale
-                        className="hidden aspect-[4/3] w-28 shrink-0 overflow-hidden border border-[var(--ink2)] sm:block"
-                        scale={1.08}
-                      >
-                        <span className="relative block h-full w-full">
-                          <Image
-                            src={images[product.image]}
-                            alt={product.imageAlt}
-                            fill
-                            sizes="112px"
-                            className="object-cover"
-                          />
-                        </span>
-                      </HoverScale>
+                      <div className="relative hidden aspect-[4/3] w-28 shrink-0 overflow-hidden border border-[var(--ink2)] transition-transform duration-500 group-hover:scale-105 sm:block">
+                        <Image
+                          src={images[product.image]}
+                          alt={product.imageAlt}
+                          fill
+                          sizes="112px"
+                          className="object-cover"
+                        />
+                      </div>
 
                       <span className="flex flex-col sm:w-44 sm:shrink-0">
                         <span className="font-body text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--ultramarine)]">

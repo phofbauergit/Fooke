@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { images, useCases } from "@/lib/content";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/Reveal";
-import { ClipReveal } from "@/components/shared/motion";
 import { fadeUp } from "@/lib/motion";
 import { SectionHeading } from "./SectionHeading";
 
@@ -21,19 +21,16 @@ export function UseCases() {
           <Reveal className="lg:col-span-7" variant={fadeUp}>
             <article className="relative overflow-hidden border border-[var(--ink2)] bg-[var(--ultramarine)]">
               <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-[var(--ink2)]">
-                <ClipReveal
+                <Image
                   src={images[lead.image]}
                   alt={lead.imageAlt}
-                  sizes="(min-width: 1024px) 60vw, 100vw"
-                  imgClassName="opacity-90"
-                  direction="right"
-                  duration={1.2}
-                  parallax
                   fill
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  className="object-cover opacity-90"
                 />
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[var(--ultramarine)] mix-blend-multiply opacity-50"
+                  className="absolute inset-0 bg-[var(--ultramarine)] mix-blend-multiply opacity-50"
                 />
               </div>
               <div className="relative flex flex-col justify-between gap-6 p-6 sm:p-10 lg:min-h-[320px] lg:flex-row">
@@ -81,14 +78,12 @@ export function UseCases() {
                 className="relative overflow-hidden border border-[var(--ink2)] lg:col-span-4"
               >
                 <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--ink2)]">
-                  <ClipReveal
+                  <Image
                     src={images[useCase.image]}
                     alt={useCase.imageAlt}
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    imgClassName="grayscale"
-                    direction="up"
-                    duration={1.1}
                     fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover grayscale"
                   />
                 </div>
                 <div className="p-6 sm:p-7">

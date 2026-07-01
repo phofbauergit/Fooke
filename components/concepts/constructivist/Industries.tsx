@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { images, industries } from "@/lib/content";
 import { RevealGroup, RevealItem } from "@/components/shared/Reveal";
-import { ClipReveal } from "@/components/shared/motion";
 import { clipUp } from "@/lib/motion";
 import { SectionHeading } from "./SectionHeading";
 
@@ -25,19 +25,16 @@ export function Industries() {
               } ${i >= 2 ? "sm:border-t" : ""} ${i % 2 === 1 ? "lg:mt-8" : ""}`}
             >
               <div className="relative mb-6 aspect-[16/9] overflow-hidden border border-[var(--ink2)]">
-                <ClipReveal
+                <Image
                   src={images[industry.image]}
                   alt={industry.imageAlt}
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  imgClassName="grayscale contrast-125"
-                  direction={i % 2 === 0 ? "right" : "left"}
-                  duration={1.1}
-                  parallax
                   fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="object-cover grayscale contrast-125"
                 />
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[var(--ultramarine)] mix-blend-multiply opacity-40"
+                  className="absolute inset-0 bg-[var(--ultramarine)] mix-blend-multiply opacity-40"
                 />
               </div>
               <span
