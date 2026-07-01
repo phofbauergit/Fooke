@@ -1,7 +1,4 @@
-"use client";
-
 import { benefits, contact } from "@/lib/content";
-import { Magnetic } from "@/components/shared/motion";
 import { SectionHeading } from "./SectionHeading";
 
 export function Contact() {
@@ -28,10 +25,6 @@ export function Contact() {
             ))}
           </ul>
 
-          {/* Closing statement — the second and final deliberate ultramarine block.
-              Local --focus-ring override: the default ultramarine ring would
-              vanish against this same-colour background, so links inside use
-              the light ink for a visible focus outline instead. */}
           <div
             className="relative overflow-hidden border border-[var(--ink2)] bg-[var(--ultramarine)] p-7 sm:p-10 lg:col-span-7 lg:-mt-3 lg:rotate-[-0.6deg] lg:p-12"
             style={{ ["--focus-ring" as string]: "var(--ultramarine-ink)" }}
@@ -40,14 +33,14 @@ export function Contact() {
               Sprechen Sie mit uns
             </p>
 
-            <Magnetic
+            <a
               href={`tel:${contact.phone}`}
-              className="font-display group mt-4 inline-block w-fit text-[clamp(2.2rem,7vw,4rem)] font-black leading-none tracking-tight text-[var(--ultramarine-ink)] no-underline"
+              className="font-display group mt-4 block w-fit text-[clamp(2.2rem,7vw,4rem)] font-black leading-none tracking-tight text-[var(--ultramarine-ink)] no-underline"
             >
               <span className="border-b-2 border-transparent transition-colors duration-200 group-hover:border-[var(--ultramarine-ink)] group-focus-visible:border-[var(--ultramarine-ink)]">
                 {contact.phoneDisplay}
               </span>
-            </Magnetic>
+            </a>
 
             <a
               href={`mailto:${contact.email}`}

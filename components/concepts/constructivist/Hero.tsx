@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { company, images } from "@/lib/content";
-import { Reveal } from "@/components/shared/Reveal";
 import { ClipReveal } from "@/components/shared/motion";
 import { useReducedMotion } from "@/lib/motion";
 import { ExplodingBlock, useBlockExplode } from "./BlockExplode";
@@ -34,14 +33,9 @@ export function Hero() {
       className="relative overflow-x-hidden px-4 pt-14 sm:px-6 lg:px-10 lg:pt-20"
     >
       <div className="relative mx-auto max-w-[1440px]">
-        <motion.p
-          className="font-body text-xs font-bold uppercase tracking-[0.24em] text-[var(--ink2)]/60"
-          initial={reducedMotion ? undefined : { opacity: 0, y: 8 }}
-          animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE }}
-        >
+        <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-[var(--ink2)]/60">
           {company.madeIn} — Seit {company.since} — Borken, NRW
-        </motion.p>
+        </p>
 
         <h1 className="font-display mt-4 text-[clamp(3rem,11.5vw,9rem)] font-black uppercase leading-[0.9] tracking-tight text-[var(--ink2)]">
           <MaskLine delay={0.08}>{company.headline}</MaskLine>
@@ -51,7 +45,7 @@ export function Hero() {
         </h1>
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
-          <Reveal className="relative z-10 lg:col-span-7 lg:rotate-[-1deg]" delay={0.1}>
+          <div className="relative z-10 lg:col-span-7 lg:rotate-[-1deg]">
             <ExplodingBlock
               runId={runId}
               ex="-18px"
@@ -66,9 +60,9 @@ export function Hero() {
                 {company.tagline} · {company.location}
               </p>
             </ExplodingBlock>
-          </Reveal>
+          </div>
 
-          <Reveal className="relative z-20 lg:col-span-5 lg:-mt-6 lg:rotate-[1.5deg]" delay={0.2}>
+          <div className="relative z-20 lg:col-span-5 lg:-mt-6 lg:rotate-[1.5deg]">
             <ExplodingBlock
               runId={runId}
               ex="20px"
@@ -131,7 +125,7 @@ export function Hero() {
                 Fig. 01 — Fertigung
               </span>
             </ExplodingBlock>
-          </Reveal>
+          </div>
         </div>
 
         <div

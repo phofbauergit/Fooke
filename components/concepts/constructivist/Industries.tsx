@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { images, industries } from "@/lib/content";
-import { RevealGroup, RevealItem } from "@/components/shared/Reveal";
-import { clipUp } from "@/lib/motion";
 import { SectionHeading } from "./SectionHeading";
 
 export function Industries() {
@@ -15,11 +13,10 @@ export function Industries() {
       <div className="mx-auto max-w-[1440px]">
         <SectionHeading index="03" title="Branchen" />
 
-        <RevealGroup className="mt-2 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+        <div className="mt-2 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
           {industries.map((industry, i) => (
-            <RevealItem
+            <div
               key={industry.id}
-              variant={clipUp}
               className={`border-b border-[var(--ink2)]/20 py-8 sm:py-10 ${
                 i % 2 === 1 ? "sm:pl-10" : "sm:pr-10"
               } ${i >= 2 ? "sm:border-t" : ""} ${i % 2 === 1 ? "lg:mt-8" : ""}`}
@@ -49,9 +46,9 @@ export function Industries() {
               <p className="font-body mt-3 max-w-md text-sm leading-relaxed text-[var(--ink2)]/75">
                 {industry.description}
               </p>
-            </RevealItem>
+            </div>
           ))}
-        </RevealGroup>
+        </div>
       </div>
     </section>
   );
