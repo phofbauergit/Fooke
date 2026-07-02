@@ -1,4 +1,5 @@
 import { company } from "@/lib/content";
+import { FookeLogo } from "@/components/shared/FookeLogo";
 
 const NAV_LINKS = [
   { href: "#produkte", label: "Produkte" },
@@ -16,15 +17,9 @@ export function Header() {
           href="#hero"
           className="group flex items-center gap-3 font-body no-underline"
         >
-          <span
-            aria-hidden
-            className="block h-7 w-3 shrink-0 bg-[var(--ultramarine)] transition-transform duration-200 group-hover:-translate-y-0.5"
-          />
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-xl font-black uppercase tracking-tight text-[var(--ink2)] sm:text-2xl">
-              {company.name}
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--ink2)]/55">
+          <FookeLogo variant="on-light" />
+          <span className="hidden flex-col leading-none sm:flex">
+            <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--ultramarine)]">
               Seit {company.since} &middot; {company.madeIn}
             </span>
           </span>

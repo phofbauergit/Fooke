@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { images, useCases } from "@/lib/content";
-import { Reveal, RevealGroup, RevealItem, SectionKicker } from "./primitives";
+import { Reveal, RevealGroup, RevealItem, SectionKicker, SectionTitle } from "./primitives";
 
 export function UseCases() {
   return (
@@ -10,12 +10,10 @@ export function UseCases() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
         <Reveal>
           <SectionKicker index="04" label="Referenzen" />
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.02em] text-[var(--ink)] sm:text-5xl">
-            Anwendungsfälle
-          </h2>
+          <SectionTitle>Anwendungsfälle</SectionTitle>
         </Reveal>
 
-        <RevealGroup className="mt-10 border-t border-[var(--ink)]">
+        <RevealGroup className="mt-10 border-t border-[var(--mark)]">
           {useCases.map((uc, i) => (
             <RevealItem
               key={uc.id}
@@ -25,7 +23,7 @@ export function UseCases() {
                 <p className="font-data text-[11px] uppercase tracking-[0.12em] text-[var(--ink-faint)]">
                   UC.{String(i + 1).padStart(2, "0")} · {uc.industry}
                 </p>
-                <p className="mt-2 font-data text-4xl font-semibold tracking-[-0.02em] text-[var(--ink)]">
+                <p className="mt-2 font-data text-4xl font-semibold tracking-[-0.02em] text-[var(--mark)]">
                   {uc.metric}
                 </p>
                 <p className="mt-1 font-data text-xs uppercase tracking-[0.08em] text-[var(--ink-soft)]">
@@ -33,7 +31,7 @@ export function UseCases() {
                 </p>
               </div>
               <div>
-                <h3 className="font-display text-xl font-medium text-[var(--ink)]">{uc.title}</h3>
+                <h3 className="font-display text-xl font-medium text-[var(--mark)]">{uc.title}</h3>
                 <p className="mt-2 max-w-[68ch] font-data text-sm leading-relaxed text-[var(--ink-soft)]">
                   {uc.description}
                 </p>

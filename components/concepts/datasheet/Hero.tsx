@@ -32,7 +32,7 @@ export function Hero() {
       <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
         <div>
           <motion.p
-            className="font-data text-xs uppercase tracking-[0.16em] text-[var(--ink-soft)]"
+            className="font-data text-xs uppercase tracking-[0.16em] text-[var(--mark)]"
             initial={reduced ? undefined : { opacity: 0, y: 8 }}
             animate={reduced ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: EASE }}
@@ -40,10 +40,10 @@ export function Hero() {
             {company.name} — {company.tagline} — {company.location}
           </motion.p>
 
-          <h1 className="mt-4 font-display text-5xl font-semibold leading-[0.98] tracking-[-0.03em] text-[var(--ink)] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-4 font-display text-5xl font-semibold leading-[0.98] tracking-[-0.03em] text-[var(--mark)] sm:text-6xl lg:text-7xl">
             <MaskLine delay={0.08}>{company.headline}</MaskLine>
             <MaskLine delay={0.2}>
-              <span className="text-[var(--mark)]">{company.subheadline}</span>
+              <span className="text-[var(--ink)]">{company.subheadline}</span>
             </MaskLine>
           </h1>
 
@@ -59,7 +59,7 @@ export function Hero() {
               ].map((tag, i) => (
                 <motion.span
                   key={tag}
-                  className="border border-[var(--rule)] px-2.5 py-1 font-data text-[11px] uppercase tracking-wide text-[var(--ink-soft)]"
+                  className="border border-[var(--mark)]/30 px-2.5 py-1 font-data text-[11px] uppercase tracking-wide text-[var(--mark)]"
                   initial={reduced ? undefined : { opacity: 0, y: 8 }}
                   animate={reduced ? undefined : { opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: reduced ? 0 : 0.5 + i * 0.08, ease: EASE }}
@@ -113,7 +113,7 @@ export function Hero() {
                 variants={{ hidden: { opacity: 0, x: -12 }, visible: { opacity: 1, x: 0 } }}
                 transition={{ duration: 0.4, ease: EASE }}
               >
-                <span className="text-[var(--ink-faint)]">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-medium text-[var(--mark)]">{String(i + 1).padStart(2, "0")}</span>
                 <span>{slide.title}</span>
               </motion.li>
             ))}

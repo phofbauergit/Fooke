@@ -1,7 +1,7 @@
 "use client";
 
 import { company, footnotes, specRows } from "@/lib/content";
-import { Reveal, SectionKicker } from "./primitives";
+import { Reveal, SectionKicker, SectionTitle } from "./primitives";
 
 const footnoteNumbers = new Map(footnotes.map((f, i) => [f.id, i + 1]));
 
@@ -27,9 +27,7 @@ export function SpecSheet() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
         <Reveal>
           <SectionKicker index="01" label="Technisches Datenblatt" />
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.02em] text-[var(--ink)] sm:text-5xl">
-            Datenblatt
-          </h2>
+          <SectionTitle>Datenblatt</SectionTitle>
           <p className="mt-4 max-w-[68ch] font-data text-sm leading-relaxed text-[var(--ink-soft)] sm:text-base">
             {company.heritage}
           </p>
@@ -38,14 +36,14 @@ export function SpecSheet() {
         <Reveal delay={0.05} className="mt-10">
           <table className="hidden w-full border-collapse font-data text-sm md:table">
             <thead>
-              <tr className="border-b border-[var(--ink)] text-left">
-                <th className="w-16 py-3 pr-4 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--ink-soft)]">
+              <tr className="border-b border-[var(--mark)] text-left">
+                <th className="w-16 py-3 pr-4 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--mark)]">
                   Code
                 </th>
-                <th className="py-3 pr-4 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--ink-soft)]">
+                <th className="py-3 pr-4 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--mark)]">
                   Parameter
                 </th>
-                <th className="py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--ink-soft)]">
+                <th className="py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--mark)]">
                   Wert
                 </th>
               </tr>

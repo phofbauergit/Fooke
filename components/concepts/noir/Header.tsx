@@ -1,4 +1,5 @@
 import { company } from "@/lib/content";
+import { FookeLogo } from "@/components/shared/FookeLogo";
 
 const NAV = [
   { href: "#products", label: "Produkte" },
@@ -14,12 +15,9 @@ export function Header() {
       <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 px-6 py-4 md:px-10">
         <a
           href="#top"
-          className="font-display text-2xl font-extrabold uppercase leading-none tracking-tight text-[var(--warmwhite)]"
+          className="flex items-center no-underline"
         >
-          {company.name}
-          <span className="ml-2.5 hidden font-body text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--steel)] sm:inline">
-            {company.tagline}
-          </span>
+          <FookeLogo variant="on-dark" />
         </a>
 
         <nav aria-label="Hauptnavigation" className="flex flex-wrap items-center gap-x-6 gap-y-2">

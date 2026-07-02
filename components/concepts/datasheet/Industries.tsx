@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { images, industries, productFinderCategories } from "@/lib/content";
-import { Figure, Reveal, RevealGroup, RevealItem, SectionKicker, Tag } from "./primitives";
+import { Figure, Reveal, RevealGroup, RevealItem, SectionKicker, SectionTitle, Tag } from "./primitives";
 
 export function Industries() {
   return (
@@ -10,12 +10,10 @@ export function Industries() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
         <Reveal>
           <SectionKicker index="03" label="Branchen" />
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.02em] text-[var(--ink)] sm:text-5xl">
-            Einsatzgebiete
-          </h2>
+          <SectionTitle>Einsatzgebiete</SectionTitle>
         </Reveal>
 
-        <RevealGroup className="mt-10 border-t border-[var(--ink)]">
+        <RevealGroup className="mt-10 border-t border-[var(--mark)]">
           {industries.map((industry, i) => (
             <RevealItem
               key={industry.id}
@@ -34,7 +32,7 @@ export function Industries() {
                 />
               </div>
               <span>
-                <span className="font-display text-xl font-medium text-[var(--ink)]">
+                <span className="font-display text-xl font-medium text-[var(--mark)]">
                   {industry.name}
                 </span>
                 <p className="mt-2 max-w-[62ch] font-data text-sm leading-relaxed text-[var(--ink-soft)]">

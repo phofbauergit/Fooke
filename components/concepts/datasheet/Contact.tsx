@@ -1,7 +1,7 @@
 "use client";
 
 import { benefits, company, contact } from "@/lib/content";
-import { Reveal, SectionKicker } from "./primitives";
+import { Reveal, SectionKicker, SectionTitle } from "./primitives";
 
 export function Contact() {
   return (
@@ -9,12 +9,10 @@ export function Contact() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
         <Reveal>
           <SectionKicker index="06" label="Kontakt" />
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.02em] text-[var(--ink)] sm:text-5xl">
-            Anfrage stellen
-          </h2>
+          <SectionTitle>Anfrage stellen</SectionTitle>
         </Reveal>
 
-        <div className="mt-10 grid gap-12 border-t border-[var(--ink)] pt-10 sm:grid-cols-2 sm:gap-16">
+        <div className="mt-10 grid gap-12 border-t border-[var(--mark)] pt-10 sm:grid-cols-2 sm:gap-16">
           <Reveal>
             <dl className="space-y-4 font-data text-sm">
               <div>

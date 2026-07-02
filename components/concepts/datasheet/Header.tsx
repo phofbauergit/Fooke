@@ -1,6 +1,7 @@
 "use client";
 
 import { company } from "@/lib/content";
+import { FookeLogo } from "@/components/shared/FookeLogo";
 
 const NAV = [
   { href: "#spec-sheet", label: "Datenblatt" },
@@ -13,14 +14,12 @@ const NAV = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-[var(--rule)] bg-[var(--paper)]/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-20 border-b border-[var(--mark)]/20 bg-[var(--paper)]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-4 sm:px-8">
-        <div className="flex flex-wrap items-baseline justify-between gap-3">
-          <a href="#hero" className="flex items-baseline gap-3 no-underline">
-            <span className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--ink)]">
-              {company.name}
-            </span>
-            <span className="font-data text-[11px] uppercase tracking-[0.14em] text-[var(--ink-soft)]">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <a href="#hero" className="flex items-center gap-4 no-underline">
+            <FookeLogo variant="on-light" />
+            <span className="hidden font-data text-[11px] uppercase tracking-[0.14em] text-[var(--mark)] sm:inline">
               {company.tagline}
             </span>
           </a>

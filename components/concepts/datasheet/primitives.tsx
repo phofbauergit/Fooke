@@ -10,11 +10,20 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 /** Section eyebrow: "§ 03 —————— Branchen" with a hairline rule filling the gap. */
 export function SectionKicker({ index, label }: { index: string; label: string }) {
   return (
-    <div className="flex items-baseline gap-3 font-data text-xs uppercase tracking-[0.14em] text-[var(--ink-soft)]">
-      <span className="text-[var(--mark)]">§ {index}</span>
-      <span aria-hidden className="h-px flex-1 bg-[var(--rule)]" />
+    <div className="flex items-baseline gap-3 font-data text-xs uppercase tracking-[0.14em] text-[var(--mark)]">
+      <span>§ {index}</span>
+      <span aria-hidden className="h-px flex-1 bg-[var(--mark)]/25" />
       <span>{label}</span>
     </div>
+  );
+}
+
+/** Section h2 — accent-colored title voice for datasheet. */
+export function SectionTitle({ children }: { children: ReactNode }) {
+  return (
+    <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.02em] text-[var(--mark)] sm:text-5xl">
+      {children}
+    </h2>
   );
 }
 

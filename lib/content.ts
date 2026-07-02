@@ -8,6 +8,11 @@ import type {
   UseCase,
 } from "./types";
 
+export const brand = {
+  logo: "/images/fooke-logo.png",
+  logoAlt: "FOOKE engineering works",
+};
+
 export const company = {
   name: "FOOKE",
   tagline: "engineering works",

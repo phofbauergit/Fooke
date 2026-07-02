@@ -156,12 +156,18 @@ body {
   --ink: #1a1a1a;
   --ink-soft: var(--fooke-grey);
   --ink-faint: #7a7a7a;
-  --rule: #d4dce6;
+  --rule: #c5d4e8;
   --mark: var(--fooke-primary);
   --mark-ink: var(--fooke-white);
   --focus-ring: var(--fooke-primary);
 
   background-image: none;
+}
+
+/* White PNG logo → FOOKE brand blue on light backgrounds */
+.fooke-logo-brand {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(2476%)
+    hue-rotate(195deg) brightness(92%) contrast(101%);
 }
 
 .c-noir.palette-client {

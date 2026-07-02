@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { images, products } from "@/lib/content";
-import { Reveal, RevealGroup, RevealItem, SectionKicker } from "./primitives";
+import { Reveal, RevealGroup, RevealItem, SectionKicker, SectionTitle } from "./primitives";
 
 export function Products() {
   return (
@@ -10,12 +10,10 @@ export function Products() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
         <Reveal>
           <SectionKicker index="02" label="Produktprogramm" />
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.02em] text-[var(--ink)] sm:text-5xl">
-            Programm
-          </h2>
+          <SectionTitle>Programm</SectionTitle>
         </Reveal>
 
-        <RevealGroup className="mt-10 border-t border-[var(--ink)]">
+        <RevealGroup className="mt-10 border-t border-[var(--mark)]">
           {products.map((p, i) => (
             <RevealItem
               key={p.id}
@@ -34,7 +32,7 @@ export function Products() {
                 />
               </div>
               <span>
-                <span className="font-display text-lg font-medium text-[var(--ink)]">{p.name}</span>
+                <span className="font-display text-lg font-medium text-[var(--mark)]">{p.name}</span>
                 <span className="mt-1 block max-w-[60ch] font-data text-sm leading-relaxed text-[var(--ink-soft)]">
                   {p.description}
                 </span>

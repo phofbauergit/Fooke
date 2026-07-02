@@ -1,7 +1,7 @@
 "use client";
 
 import { images, testimonials } from "@/lib/content";
-import { Figure, Reveal, RevealGroup, RevealItem, SectionKicker } from "./primitives";
+import { Figure, Reveal, RevealGroup, RevealItem, SectionKicker, SectionTitle } from "./primitives";
 
 export function Testimonials() {
   return (
@@ -9,9 +9,7 @@ export function Testimonials() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
         <Reveal>
           <SectionKicker index="05" label="Stimmen" />
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.02em] text-[var(--ink)] sm:text-5xl">
-            Aus der Praxis
-          </h2>
+          <SectionTitle>Aus der Praxis</SectionTitle>
         </Reveal>
 
         <Reveal className="mt-10">
@@ -24,7 +22,7 @@ export function Testimonials() {
           />
         </Reveal>
 
-        <RevealGroup className="mt-10 grid gap-10 border-t border-[var(--ink)] pt-10 sm:grid-cols-2 sm:gap-12">
+        <RevealGroup className="mt-10 grid gap-10 border-t border-[var(--mark)] pt-10 sm:grid-cols-2 sm:gap-12">
           {testimonials.map((t) => (
             <RevealItem key={t.id} className="border-t border-[var(--rule)] pt-6">
               <figure>
