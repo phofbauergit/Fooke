@@ -6,6 +6,14 @@
 /* ---------------------------------------------------------------------- */
 :root {
   --focus-ring: #141210;
+
+  /* FOOKE corporate identity — fooke-machines.com */
+  --fooke-primary: #004187;
+  --fooke-accent: #00a0e1;
+  --fooke-grey: #505050;
+  --fooke-white: #ffffff;
+  --fooke-navy-dark: #002952;
+  --fooke-navy-mid: #003d73;
 }
 
 @theme inline {
@@ -137,6 +145,42 @@ body {
 }
 .c-constructivist .font-body {
   font-family: var(--font-archivo), sans-serif;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Client palette — FOOKE CI overrides (default via .palette-client)      */
+/* ---------------------------------------------------------------------- */
+.c-datasheet.palette-client {
+  --paper: var(--fooke-white);
+  --paper-raised: #f0f4f8;
+  --ink: #1a1a1a;
+  --ink-soft: var(--fooke-grey);
+  --ink-faint: #7a7a7a;
+  --rule: #d4dce6;
+  --mark: var(--fooke-primary);
+  --mark-ink: var(--fooke-white);
+  --focus-ring: var(--fooke-primary);
+
+  background-image: none;
+}
+
+.c-noir.palette-client {
+  --graphite: var(--fooke-navy-dark);
+  --graphite-raised: var(--fooke-navy-mid);
+  --graphite-line: #1a5082;
+  --steel: #b8c5d4;
+  --steel-dim: #7a8fa3;
+  --warmwhite: var(--fooke-white);
+  --hazard: var(--fooke-accent);
+  --focus-ring: var(--fooke-accent);
+}
+
+.c-constructivist.palette-client {
+  --paper2: var(--fooke-white);
+  --ink2: #1a1a1a;
+  --ultramarine: var(--fooke-primary);
+  --ultramarine-ink: var(--fooke-white);
+  --focus-ring: var(--fooke-primary);
 }
 
 ::selection {

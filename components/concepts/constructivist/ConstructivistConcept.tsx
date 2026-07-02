@@ -5,6 +5,7 @@ import { Industries } from "./Industries";
 import { UseCases } from "./UseCases";
 import { Testimonials } from "./Testimonials";
 import { Contact } from "./Contact";
+import type { ColorMode } from "@/lib/types";
 
 /**
  * Concept C — Constructivist: off-white/ink poster system with a single
@@ -12,9 +13,11 @@ import { Contact } from "./Contact";
  * Big Shoulders numerals act as graphic/compositional elements throughout
  * (hero year, industry index, use-case metrics), not just headline text.
  */
-export function ConstructivistConcept() {
+export function ConstructivistConcept({ palette }: { palette: ColorMode }) {
   return (
-    <div className="c-constructivist concept-scroll min-h-screen overflow-x-hidden">
+    <div
+      className={`c-constructivist concept-scroll min-h-screen overflow-x-hidden${palette === "client" ? " palette-client" : ""}`}
+    >
       <Header />
       <main>
         <Hero />

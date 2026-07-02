@@ -1,5 +1,8 @@
 export type ConceptId = "datasheet" | "noir" | "constructivist";
 
+/** Client = FOOKE corporate identity (fooke-machines.com); concept = design exploration palette. */
+export type ColorMode = "client" | "concept";
+
 export type ImageKey =
   | "millDark"
   | "cfrpCloseup"
