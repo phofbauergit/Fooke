@@ -15,19 +15,20 @@ const NAV = [
 export function Header() {
   return (
     <header className="sticky top-0 z-20 border-b border-[var(--mark)]/20 bg-[var(--paper)]/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-4 sm:px-8">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <a href="#hero" className="flex items-center gap-4 no-underline">
-            <FookeLogo variant="on-light" />
-            <span className="hidden font-data text-[11px] uppercase tracking-[0.14em] text-[var(--mark)] sm:inline">
-              {company.tagline}
-            </span>
-          </a>
-          <span className="font-data text-[11px] uppercase tracking-[0.14em] text-[var(--ink-soft)]">
-            Seit {company.since} · {company.madeIn}
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-5 gap-y-3 px-6 py-4 sm:gap-x-7 lg:gap-x-8">
+        <a href="#hero" className="flex shrink-0 items-center gap-3 no-underline">
+          <FookeLogo variant="on-light" />
+          <span className="font-data text-[11px] uppercase tracking-[0.14em] text-[var(--mark)]">
+            {company.tagline}
           </span>
-        </div>
-        <nav aria-label="Hauptnavigation" className="flex flex-wrap gap-x-6 gap-y-2">
+        </a>
+
+        <span aria-hidden className="hidden h-7 w-px shrink-0 bg-[var(--mark)]/20 sm:block" />
+
+        <nav
+          aria-label="Hauptnavigation"
+          className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-6"
+        >
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -38,6 +39,12 @@ export function Header() {
             </a>
           ))}
         </nav>
+
+        <span aria-hidden className="hidden h-7 w-px shrink-0 bg-[var(--mark)]/20 lg:block" />
+
+        <span className="shrink-0 font-data text-[11px] uppercase tracking-[0.14em] text-[var(--ink-soft)]">
+          Seit {company.since} · {company.madeIn}
+        </span>
       </div>
     </header>
   );

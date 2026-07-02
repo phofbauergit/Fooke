@@ -12,10 +12,10 @@ export function FookeLogo({ variant = "on-light", className = "" }: FookeLogoPro
     <Image
       src={brand.logo}
       alt={brand.logoAlt}
-      width={160}
-      height={48}
+      width={251}
+      height={113}
       priority
-      className={`h-7 w-auto sm:h-8 ${variant === "on-light" ? "fooke-logo-brand" : ""} ${className}`.trim()}
+      className={`h-11 w-auto sm:h-14 md:h-16 ${variant === "on-light" ? "fooke-logo-brand" : ""} ${className}`.trim()}
     />
   );
 }
